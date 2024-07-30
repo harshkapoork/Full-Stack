@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 const user = require('../model/user');
 const app = express()
-const admin = require("../config/firebase")
+// const admin = require("../config/firebase")
 
 
 
@@ -12,64 +12,64 @@ app.use(express.json())
 
 // extract info from token
 
-router.post("/test", async (req, res) => {
-    const token =req.body.token.authorization
+// router.post("/test", async (req, res) => {
+//     const token =req.body.token.authorization
 
-    // = req.data
-    // console.log(token)
+//     // = req.data
+//     // console.log(token)
     
-    const decodeValue = await admin.auth().verifyIdToken(token)
-    console.log(decodeValue)
-    res.json(decodeValue)
-})
+//     const decodeValue = await admin.auth().verifyIdToken(token)
+//     console.log(decodeValue)
+//     res.json(decodeValue)
+// })
 
 
 
-router.post("/google", async (req, res) => {
+// router.post("/google", async (req, res) => {
   
 
-    const token =req.body.token.authorization
-    // console.log(token)
+//     const token =req.body.token.authorization
+//     // console.log(token)
     
-    const decodeValue = await admin.auth().verifyIdToken(token)
+//     const decodeValue = await admin.auth().verifyIdToken(token)
 
-    const filter = {
-        email: { email: decodeValue.email },
+//     const filter = {
+//         email: { email: decodeValue.email },
        
-    }
-    const CheckUser = await user.findOne(filter.email)
+//     }
+//     const CheckUser = await user.findOne(filter.email)
    
 
-    if (!CheckUser)
-    {
-        const newUser = new user({
-        username: decodeValue.name,
-            email: decodeValue.email,
+//     if (!CheckUser)
+//     {
+//         const newUser = new user({
+//         username: decodeValue.name,
+//             email: decodeValue.email,
     
-    });
-    try {
-        const newUserData = await newUser.save();
+//     });
+//     try {
+//         const newUserData = await newUser.save();
     
       
-        res.status(201).json({status:true,message: " successfully SignedUp" })
+//         res.status(201).json({status:true,message: " successfully SignedUp" })
         
         
-    }
-    catch (error) {
-        res.json({ status: false, message: "Signup failed" })
+//     }
+//     catch (error) {
+//         res.json({ status: false, message: "Signup failed" })
       
-    }
+//     }
         
      
-    }
-    else {
-        res.json("Email already register")
+//     }
+//     else {
+//         res.json("Email already register")
        
-    }
+//     }
 
     
     
-})
+// })
 // extract info from token
 
 
