@@ -4,7 +4,7 @@ const port = process.env.PORT || 4000;
 const cors = require("cors")
 const dotenv = require("dotenv")
 //new
-const uri = "mongodb+srv://harshkapoor458:<db_password>@vichle-app.x9dbv.mongodb.net/?retryWrites=true&w=majority&appName=Vichle-App";
+const uri = "mongodb+srv://harshkapoor458:fIZzjxcNu1Yi5Bcx@vichle-app.x9dbv.mongodb.net/?retryWrites=true&w=majority&appName=Vichle-App";
 
 dotenv.config();
 // middleware
@@ -14,7 +14,7 @@ app.use(express.json())
 
 // database connection
 const mongoose = require('mongoose');
-mongoose.connect(uri, )
+mongoose.connect(uri )
     .then(() => {
     console.log("Db connection Started")
 })
